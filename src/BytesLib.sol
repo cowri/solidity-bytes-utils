@@ -306,7 +306,7 @@ library BytesLib {
 
         return tempAddress;
     }
-
+    
     function toUint8(bytes memory _bytes, uint256 _start) internal pure returns (uint8) {
         require(_start + 1 >= _start, "toUint8_overflow");
         require(_bytes.length >= _start + 1 , "toUint8_outOfBounds");
@@ -318,7 +318,12 @@ library BytesLib {
 
         return tempUint;
     }
-
+    
+    function concatUint8(bytes memory _preBytes, uint8 _val) internal pure returns (bytes memory bytes_) {
+        bytes memory _postBytes = abi.encodePacked(_val);
+        return concat(_preBytes, _postBytes);
+    }
+    
     function toUint16(bytes memory _bytes, uint256 _start) internal pure returns (uint16) {
         require(_start + 2 >= _start, "toUint16_overflow");
         require(_bytes.length >= _start + 2, "toUint16_outOfBounds");
@@ -329,6 +334,11 @@ library BytesLib {
         }
 
         return tempUint;
+    }
+    
+    function concatUint16(bytes memory _preBytes, uint16 _val) internal pure returns (bytes memory) {
+        bytes memory _postBytes = abi.encodePacked(_val);  
+        return concat(_preBytes, _postBytes);
     }
 
     function toUint32(bytes memory _bytes, uint256 _start) internal pure returns (uint32) {
@@ -341,6 +351,11 @@ library BytesLib {
         }
 
         return tempUint;
+    }
+    
+    function concatUint32(bytes memory _preBytes, uint32 _val) internal pure returns (bytes memory) {
+        bytes memory _postBytes = abi.encodePacked(_val);
+        return concat(_preBytes, _postBytes);
     }
 
     function toUint64(bytes memory _bytes, uint256 _start) internal pure returns (uint64) {
@@ -355,6 +370,11 @@ library BytesLib {
         return tempUint;
     }
 
+    function concatUint64(bytes memory _preBytes, uint64 _val) internal pure returns (bytes memory) {
+        bytes memory _postBytes = abi.encodePacked(_val);
+        return concat(_preBytes, _postBytes);
+    }
+
     function toUint96(bytes memory _bytes, uint256 _start) internal pure returns (uint96) {
         require(_start + 12 >= _start, "toUint96_overflow");
         require(_bytes.length >= _start + 12, "toUint96_outOfBounds");
@@ -365,6 +385,11 @@ library BytesLib {
         }
 
         return tempUint;
+    }
+
+    function concatUint96(bytes memory _preBytes, uint96 _val) internal pure returns (bytes memory) {
+        bytes memory _postBytes = abi.encodePacked(_val);
+        return concat(_preBytes, _postBytes);
     }
 
     function toUint128(bytes memory _bytes, uint256 _start) internal pure returns (uint128) {
@@ -379,6 +404,11 @@ library BytesLib {
         return tempUint;
     }
 
+    function concatUint128(bytes memory _preBytes, uint128 _val) internal pure returns (bytes memory) {
+        bytes memory _postBytes = abi.encodePacked(_val);
+        return concat(_preBytes, _postBytes);
+    }
+
     function toUint256(bytes memory _bytes, uint256 _start) internal pure returns (uint256) {
         require(_start + 32 >= _start, "toUint256_overflow");
         require(_bytes.length >= _start + 32, "toUint256_outOfBounds");
@@ -391,6 +421,11 @@ library BytesLib {
         return tempUint;
     }
 
+    function concatUint256(bytes memory _preBytes, uint256 _val) internal pure returns (bytes memory) {
+        bytes memory _postBytes = abi.encodePacked(_val);
+        return concat(_preBytes, _postBytes);
+    }
+    
     function toBytes32(bytes memory _bytes, uint256 _start) internal pure returns (bytes32) {
         require(_start + 32 >= _start, "toBytes32_overflow");
         require(_bytes.length >= _start + 32, "toBytes32_outOfBounds");
